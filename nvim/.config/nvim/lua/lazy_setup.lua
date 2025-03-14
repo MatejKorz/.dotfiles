@@ -12,8 +12,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  {import = "xkorz.plugins"},
-  {import = "xkorz.plugins.lsp"}
+  {import = "plugins"},
+  {import = "plugins.lsp"}
   }, {
     checker = {enable=true, notify=false,},
     change_detection = {notify = false,},

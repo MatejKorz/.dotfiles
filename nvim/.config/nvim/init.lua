@@ -1,4 +1,4 @@
-require("xkorz.core.keymaps")
-require("xkorz.core.options")
-require("xkorz.lazy")
+require("core.keymaps")
+require("core.options")
+require("lazy_setup")
 
