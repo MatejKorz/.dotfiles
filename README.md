@@ -8,7 +8,7 @@ To use this dotfiles, fist clone this repo:
 ```
 git clone https://github.com/MatejKorz/.dotfiles.git
 ```
-Then use Stow to create symlinks on your system. Add packge config use:
+Then use Stow to create symlinks on your system:
 ```
 stow <package-name>
 ```
