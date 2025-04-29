@@ -1,0 +1,17 @@
+window#waybar {
+    background-color: rgba(28, 28, 28, 0.7);
+    border: none;
+}
+
+box.modules-left {
+    border: 2px solid #E7D7AD;
+    padding: 0px 5px;
+    border-radius: 5px;
+}
+
+box.modules-right {
+    border: 2px solid #E7D7AD;
+    padding: 0px 5px;
+    border-radius: 5px;
+}
+

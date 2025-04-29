@@ -1,0 +1,78 @@
+// -*- mode: jsonc -*-
+{
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "height": 34, // Waybar height
+    "spacing": 10, // Gaps between modules
+
+    "modules-left": ["sway/workspaces","sway/mode"],
+    "modules-center": ["sway/window"],
+    "modules-right": ["tray","idle_inhibitor","pulseaudio","network","battery","sway/language","clock"],
+
+    "reload_style_on_change": true,
+
+    "sway/workspaces": {
+        "disable-scroll": true,
+    },
+
+    "sway/mode": {
+        "format": "{}",
+    },
+
+    "sway/language": {
+        "format": "{short}",
+        "tooltip-format": "{short}/{variant}",
+    },
+
+    "sway/window": {
+        "format": "(✿◠‿◠) {title} (≖_≖ )",
+        "max-length": 100,
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon} ",
+        "format-icons": {
+            "deactivated": "",
+            "activated": ""
+        },
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰖁 {volume}%",
+        "format-icons": {
+            "headphone": "󰋋",
+            "headphone-muted": "󰟎",
+
+            "default": ["󰖀", "󰕾"]
+        },
+
+        "reverse-scrolling": false,
+        "reverse-mouse-scrolling": true,
+        "on-click": "flatpak run com.saivert.pwvucontrol"
+    },
+
+    "network": {
+        "format": "{ifname}",
+        "format-wifi": " {essid} ({signalStrength}%)",
+        "format-ethernet": "󰈁 {ipaddr}/{cidr}",
+        "format-disconnected": "disconnected",
+
+        "tooltip-format": "{ifname} via {gwaddr} - {ipaddr}/{cidr}",
+    },
+
+    "battery": {
+        "bat": "BAT1",
+        "states": {
+            "good": 90,
+            "warning": 20,
+            "critical": 5,
+        },
+        "format": "󰁾 {capacity}%",
+        "format-charging": " {capacity}%",
+    },
+
+    "clock": {
+        "format-alt": "{:%d-%m-%Y}",
+    }
+}
