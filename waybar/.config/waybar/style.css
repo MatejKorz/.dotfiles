@@ -1,17 +1,150 @@
+@define-color bg        #282828;
+@define-color red-bg    #cc241d;
+@define-color green-bg  #98971a;
+@define-color yellow-bg #d79921;
+@define-color blue-bg   #458588;
+@define-color purple-bg #b16286;
+@define-color aqua-bg   #689d6a;
+@define-color gray-bg   #a89984;
+
+@define-color gray      #928374;
+@define-color red       #fb4934;
+@define-color green     #b8bb26;
+@define-color yellow    #fabd2f;
+@define-color blue      #83a598;
+@define-color purple    #d3869b;
+@define-color aqua      #8ec07c;
+@define-color fg        #ebdbb2;
+
+* {
+    box-shadow: none;
+}
+
 window#waybar {
     background-color: rgba(28, 28, 28, 0.7);
     border: none;
 }
 
 box.modules-left {
-    border: 2px solid #E7D7AD;
-    padding: 0px 5px;
-    border-radius: 5px;
+    padding: 1px 5px;
 }
 
 box.modules-right {
-    border: 2px solid #E7D7AD;
-    padding: 0px 5px;
-    border-radius: 5px;
+    padding: 1px 5px;
 }
 
+/* Workspaces */
+
+#workspaces button:hover {
+    border: 1px solid transparent;
+    border-top: 1px solid @green;
+    color: @green;
+}
+
+#workspaces button.focused {
+    border-top: 1px solid @fg;
+    font-weight: bold;
+}
+
+#workspaces button.focused:hover {
+    border-top: 1px solid @green;
+    color: @green;
+}
+
+/* Battery */
+
+#battery {
+    border-top: 1px solid @fg;
+}
+
+#battery.warning {
+    border-top: 1px solid @yellow;
+    color: @yellow;
+}
+
+#battery.critical {
+    border-top: 1px solid @red;
+    color: @red;
+}
+
+#battery.plugged {
+    border-top: 1px solid @green;
+    color: @green;
+}
+
+/* Bluetooth */
+
+#bluetooth {
+    border-top: 1px solid @fg;
+}
+
+
+#bluetooth.disabled {
+    border-top: 1px solid @gray;
+    color: @gray;
+}
+
+
+#bluetooth.connected {
+    border-top: 1px solid @blue;
+    color: @blue;
+}
+
+/* Clock */
+
+#clock {
+    border-top: 1px solid @fg;
+}
+
+/* Idle inhibitor */
+
+#idle_inhibitor {
+    border-top: 1px solid @fg;
+}
+
+#idle_inhibitor.activated {
+    border-top: 1px solid @green;
+    color: @green;
+}
+
+#idle_inhibitor.activated tooltip {
+    border: 1px solid @green;
+}
+
+#idle_inhibitor.deactivated {
+    border-top: 1px solid @gray;
+    color: @gray;
+}
+
+/* Langauge */
+
+#language {
+    border-top: 1px solid @fg;
+}
+
+/* Network */
+
+#network {
+    border-top: 1px solid @fg;
+}
+
+#network.disconnected {
+    border-top: 1px solid @red;
+    color: @red;
+}
+
+#network.wifi {
+    border-top: 1px solid @blue;
+    color: @blue;
+}
+
+/* Sound */
+
+#pulseaudio {
+    border-top: 1px solid @fg;
+}
+
+#pulseaudio.muted {
+    border-top: 1px solid @gray;
+    color: @gray;
+}

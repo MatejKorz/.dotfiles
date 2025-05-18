@@ -5,9 +5,9 @@
     "height": 34, // Waybar height
     "spacing": 10, // Gaps between modules
 
-    "modules-left": ["sway/workspaces","sway/mode"],
+    "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window"],
-    "modules-right": ["tray","idle_inhibitor","pulseaudio","network","battery","sway/language","clock"],
+    "modules-right": ["tray", "idle_inhibitor", "bluetooth", "pulseaudio", "network", "battery", "keyboard-state", "sway/language", "clock"],
 
     "reload_style_on_change": true,
 
@@ -29,12 +29,36 @@
         "max-length": 100,
     },
 
+    "keyboard-state": {
+        "numlock": true,
+        "capslock": true,
+        "format": {
+            "numlock": "N{icon} ",
+            "capslock": "C{icon} "
+        },
+        "format-icons": {
+            "locked": "",
+            "unlocked": ""
+        }
+    },
+
     "idle_inhibitor": {
         "format": "{icon} ",
         "format-icons": {
             "deactivated": "",
             "activated": ""
         },
+    },
+
+    "bluetooth": {
+    	"format": " {status}",
+    	"format-connected": " {device_alias}",
+    	"format-connected-battery": " {device_alias} {device_battery_percentage}%",
+    	// "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
+    	"tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+    	"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+    	"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    	"tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
     },
 
     "pulseaudio": {
@@ -68,11 +92,14 @@
             "warning": 20,
             "critical": 5,
         },
-        "format": "󰁾 {capacity}%",
-        "format-charging": " {capacity}%",
+        "format": "{icon} {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
     },
 
     "clock": {
-        "format-alt": "{:%d-%m-%Y}",
+        "tooltip": true,
+        "tooltip-format": "{:%d.%m.%Y}",
+        "on-click": "flatpak run org.mozilla.Thunderbird -calendar"
     }
 }

@@ -269,6 +269,27 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 #
+# exit mode
+#
+
+set $exit "exit: [s]leep, [p]oweroff, [r]eboot, [l]ogout:
+mode $exit {
+    bindsym --to-code {
+        s exec systemctl suspend, mode "default"
+        p exec systemctl poweroff
+        r exec systemctl reboot
+        l exec swaymsg exit
+
+        Return mode "default"
+        Escape mode "default"
+        $mod+x mode "default"
+    }
+}
+
+bindsym --to-code $mod+x mode $exit
+
+
+#
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
@@ -302,10 +323,10 @@ for_window {
 smart_borders on
 
 # client.<state> <border> <background> <text> <indicator>
-client.focused          #689d6a #689d6a #fbf1c7 #458588
+client.focused          #98971a #98971a #ebdbb2 #458588
 client.focused_inactive #3c3836 #3c3836 #ebdbb2 #3c3836
 client.unfocused        #3c3836 #3c3836 #ebdbb2 #3c3836
-client.urgent           #cc241d #cc241d #fbf1c7 #cc241d
+client.urgent           #cc241d #cc241d #ebdbb2 #cc241d
 client.placeholder      #282828 #282828 #ebdbb2 #282828
 
 exec_always "export GTK_THEME=Gruvbox-Dark-Medium && export XDG_CURRENT_DESKTOP=sway"
