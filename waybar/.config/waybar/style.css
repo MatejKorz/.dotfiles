@@ -51,6 +51,15 @@ box.modules-right {
     color: @green;
 }
 
+#workspaces button.urgent {
+    border-top: 1px solid @red;
+    color: @red;
+}
+
+#workspaces button.urgent:hover {
+    border-top: 1px solid @green;
+    color: @green;
+}
 /* Battery */
 
 #battery {
@@ -68,6 +77,11 @@ box.modules-right {
 }
 
 #battery.plugged {
+    border-top: 1px solid @green;
+    color: @green;
+}
+
+#battery.charging {
     border-top: 1px solid @green;
     color: @green;
 }
