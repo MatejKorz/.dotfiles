@@ -1,0 +1,9 @@
+daemonize
+show-failed-attempts
+color=282828ee
+key-hl-color=b8bb26
+ring-color=98971a
+inside-wrong-color=cc241d
+ring-wrong-color=fb4934
+inside-ver-color=458588
+ring-ver-color=83a598
