@@ -1,12 +1,15 @@
-# Default config for sway
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
-# Read `man 5 sway` for a complete reference.
+include ./colors.conf
+
+exec systemctl --user import-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK I3SOCK XCURSOR_SIZE XCURSOR_THEME
+exec dbus-update-activation-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP=sway SWAYSOCK I3SOCK XCURSOR_SIZE XCURSOR_THEME
+
+exec "gammastep -t 6500:4000 -l 49:16"
+
+exec dunst &
+
 
 ### Variables
 #
-# Logo key. Use Mod1 for Alt.
 set $mod Mod4
 # Home row direction keys, like vim
 set $left h
@@ -24,11 +27,9 @@ set $menu wofi -I -i --show drun | xargs swaymsg exec --
 include /etc/sway/config-vars.d/*
 
 ### Output configuration
-#
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-#output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-#output * bg /home/xkorz/Pictures/commingling_of_radiances_by_sevenics_ddjuejh.png fill
-output * bg /home/xkorz/Pictures/brown_city_planet_w.jpg fill
+
+output * bg $HOME/wallpaper fill
+
 #
 # Example configuration:
 #
@@ -210,15 +211,7 @@ bindsym XF86MonBrightnessDown exec brightnessctl s 10%-  # Decrease brightness b
 bindsym XF86MonBrightnessUp exec brightnessctl s +10%  # Increase brightness by 10%
 
 # Screenshot
-
-bindsym Print exec grim -g "$(slurp -w 0)"
-
-
-#
-# Swaylock
-#
-
-bindsym $mod+Ctrl+l exec swaylock --color 282828ee --show-failed-attempts
+bindsym Print exec sh -c 'grim -g "$(slurp -w 0)" - | wl-copy'
 
 
 #
@@ -244,7 +237,7 @@ bindsym XF86AudioMicMute exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
 bindsym XF86Calculator exec $calc
 
 #
-# Resizing containers:
+# Resize mode
 #
 mode "resize" {
     # left will shrink the containers width
@@ -269,52 +262,38 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 #
-# exit mode
+# Exit mode
 #
 
-set $exit "exit: [s]leep, [p]oweroff, [r]eboot, [l]ogout:
+set $exit "exit: [s]leep, [p]oweroff, [r]eboot, [l]ock, [e]xit"
 mode $exit {
-    bindsym --to-code {
-        s exec systemctl suspend, mode "default"
-        p exec systemctl poweroff
-        r exec systemctl reboot
-        l exec swaymsg exit
+    bindsym s exec systemctl suspend, mode "default"
+    bindsym p exec systemctl poweroff
+    bindsym r exec systemctl reboot
+    bindsym l exec swaylock, mode "default"
+    bindsym e exec swaymsg exit
 
-        Return mode "default"
-        Escape mode "default"
-        $mod+x mode "default"
-    }
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+x mode "default"
 }
 
-bindsym --to-code $mod+x mode $exit
+bindsym $mod+x mode $exit
 
+### Bar
 
-#
-# Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
-# bar {
-#     position top
-# 
-#     # When the status_command prints a new line to stdout, swaybar updates.
-#     # The default just shows the current date and time.
-#     status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
-# 
-#     colors {
-#         statusline #ffffff
-#         background #323232
-#         inactive_workspace #32323200 #32323200 #5c5c5c
-#     }
-# }
+bar {
+    swaybar_command waybar
+}
 
 ### Font
 
 font "Inconsolata Nerd Font Mono Regular 12"
 
-### Windows
+### Window rules
 
 for_window {
-    [app_id="LibreWolf" title="^Picture-in-Picture$"] floating enable, move position 877 450, sticky enable
+    [app_id="librewolf" title="^Picture-in-Picture$"] floating enable, move position 877 450, sticky enable
     [app_id="qalculate"] floating enable
 }
 
@@ -322,17 +301,11 @@ for_window {
 
 smart_borders on
 
-# client.<state> <border> <background> <text> <indicator>
-client.focused          #98971a #98971a #ebdbb2 #458588
-client.focused_inactive #3c3836 #3c3836 #ebdbb2 #3c3836
-client.unfocused        #3c3836 #3c3836 #ebdbb2 #3c3836
-client.urgent           #cc241d #cc241d #ebdbb2 #cc241d
-client.placeholder      #282828 #282828 #ebdbb2 #282828
-
-exec_always "export GTK_THEME=Gruvbox-Dark-Medium && export XDG_CURRENT_DESKTOP=sway"
-
-exec_always "gammastep -t 6500:4000 -l 49:16"
-
-exec waybar
+# client.<state> <border> <bg> <text> <indicator>
+client.focused          $green-bg $green-bg $fg $green-bg
+client.focused_inactive $gray   $gray   $fg     $gray
+client.unfocused        $bg     $bg     $fg     $bg
+client.urgent           $red-bg $red-bg $fg     $red-bg
+client.placeholder      $bg     $bg     $fg     $bg
 
 include /etc/sway/config.d/*
