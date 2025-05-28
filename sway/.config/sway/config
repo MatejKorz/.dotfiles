@@ -205,10 +205,10 @@ input "type:keyboard" {
 #
 
 # Brightness down
-bindsym XF86MonBrightnessDown exec brightnessctl s 10%-  # Decrease brightness by 10%
+bindsym XF86MonBrightnessDown exec $HOME/.config/sway/scripts/brightness_notify.sh down
 
 # Brightness up
-bindsym XF86MonBrightnessUp exec brightnessctl s +10%  # Increase brightness by 10%
+bindsym XF86MonBrightnessUp exec $HOME/.config/sway/scripts/brightness_notify.sh up
 
 # Screenshot
 bindsym Print exec sh -c 'grim -g "$(slurp -w 0)" - | wl-copy'
