@@ -60,6 +60,7 @@ box.modules-right {
     border-top: 1px solid @green;
     color: @green;
 }
+
 /* Battery */
 
 #battery {
@@ -148,6 +149,11 @@ box.modules-right {
 }
 
 #network.wifi {
+    border-top: 1px solid @blue;
+    color: @blue;
+}
+
+#network.ethernet {
     border-top: 1px solid @blue;
     color: @blue;
 }
