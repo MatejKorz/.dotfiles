@@ -2,7 +2,6 @@ include ./colors.conf
 
 exec systemctl --user import-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK I3SOCK XCURSOR_SIZE XCURSOR_THEME
 exec dbus-update-activation-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP=sway SWAYSOCK I3SOCK XCURSOR_SIZE XCURSOR_THEME
-
 exec "gammastep -t 6500:4000 -l 49:16"
 
 exec dunst &
@@ -22,7 +21,7 @@ set $calc qalculate
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu wofi -I -i --show drun | xargs swaymsg exec --
+set $menu rofi -show drun | xargs swaymsg exec --
 
 include /etc/sway/config-vars.d/*
 
@@ -219,16 +218,16 @@ bindsym Print exec sh -c 'grim -g "$(slurp -w 0)" - | wl-copy'
 #
 
 # Volume down
-bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+bindsym XF86AudioLowerVolume exec $HOME/.config/sway/scripts/audio_notify.sh down
 
 # Volume up
-bindsym XF86AudioRaiseVolume exec wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+
+bindsym XF86AudioRaiseVolume exec $HOME/.config/sway/scripts/audio_notify.sh up
 
 # Mute toggle
-bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+bindsym XF86AudioMute exec $HOME/.config/sway/scripts/audio_notify.sh toggle
 
 # Mute mic toggle
-bindsym XF86AudioMicMute exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+bindsym XF86AudioMicMute exec $HOME/.config/sway/scripts/audio_notify.sh toggle-source
 
 #
 # Another Fn-keys
@@ -291,6 +290,8 @@ bar {
 font "Inconsolata Nerd Font Mono Regular 12"
 
 ### Window rules
+
+focus_on_window_activation focus
 
 for_window {
     [app_id="librewolf" title="^Picture-in-Picture$"] floating enable, move position 877 450, sticky enable
