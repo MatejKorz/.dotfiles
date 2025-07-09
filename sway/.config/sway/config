@@ -2,7 +2,7 @@ include ./colors.conf
 
 exec systemctl --user import-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK I3SOCK XCURSOR_SIZE XCURSOR_THEME
 exec dbus-update-activation-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP=sway SWAYSOCK I3SOCK XCURSOR_SIZE XCURSOR_THEME
-exec "gammastep -t 6500:4000 -l 49:16"
+exec gammastep -t 6500:4000 -l 49:16
 
 exec dunst &
 
@@ -27,6 +27,7 @@ include /etc/sway/config-vars.d/*
 
 ### Output configuration
 
+#output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 output * bg $HOME/wallpaper fill
 
 #
@@ -287,7 +288,7 @@ bar {
 
 ### Font
 
-font "Inconsolata Nerd Font Mono Regular 12"
+font pango:Mononoki Nerd Font Mono 12
 
 ### Window rules
 

@@ -16,8 +16,15 @@
 @define-color aqua      #8ec07c;
 @define-color fg        #ebdbb2;
 
+
 * {
+    min-height: 0;
     box-shadow: none;
+    font-weight: normal;
+    font-size: 14px;
+    font-family: "Mononoki Nerd Font Mono";
+    color: @fg;
+    border-radius: 0;
 }
 
 window#waybar {
@@ -31,6 +38,17 @@ box.modules-left {
 
 box.modules-right {
     padding: 1px 5px;
+}
+
+button {
+    min-height: 0;
+    min-width: 0;
+    padding: 0 7;
+    background-color: transparent;
+}
+
+button:hover {
+    background: none;
 }
 
 /* Workspaces */
@@ -93,12 +111,10 @@ box.modules-right {
     border-top: 1px solid @fg;
 }
 
-
 #bluetooth.disabled {
     border-top: 1px solid @gray;
     color: @gray;
 }
-
 
 #bluetooth.connected {
     border-top: 1px solid @blue;
@@ -114,6 +130,7 @@ box.modules-right {
 /* Idle inhibitor */
 
 #idle_inhibitor {
+    font-weight: bold;
     border-top: 1px solid @fg;
 }
 
