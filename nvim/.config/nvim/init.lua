@@ -1,4 +1,4 @@
-require("core.keymaps")
+require("config.lazy")
 require("core.options")
-require("lazy_setup")
 
+require("config.highlight")
