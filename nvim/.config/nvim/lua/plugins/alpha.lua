@@ -1,6 +1,6 @@
 return {
     "goolord/alpha-nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    dependencies = { "nvim-tree/nvim-web-devicons", "echasnovski/mini.pick" },
     config = function()
         local dashboard = {
             layout = {},
@@ -73,7 +73,7 @@ return {
                         position = "center",
                         shortcut = "f",
                         align_shortcut = "left",
-                        keymap = { "n", "f", "<cmd>lua require('telescope.builtin').find_files()<CR>", { noremap = true, silent = true } },
+                        keymap = { "n", "f", "<cmd>lua require('mini.pick').builtin.files()<CR>", { noremap = true, silent = true } },
                     }
                 },
                 {
