@@ -7,6 +7,7 @@ exec gammastep -t 6500:4000 -l 49:16
 exec dunst &
 
 
+
 ### Variables
 #
 set $mod Mod4
@@ -27,8 +28,9 @@ include /etc/sway/config-vars.d/*
 
 ### Output configuration
 
+exec $HOME/.config/sway/scripts/dynamic_wallpaper.sh
 #output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-output * bg $HOME/wallpaper fill
+#output * bg $HOME/wallpaper fill
 
 #
 # Example configuration:
