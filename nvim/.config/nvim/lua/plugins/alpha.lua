@@ -1,6 +1,6 @@
 return {
     "goolord/alpha-nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons", "nvim-telescope/telescope.nvim" },
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
         local dashboard = {
             layout = {},
