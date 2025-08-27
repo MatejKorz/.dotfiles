@@ -2,6 +2,9 @@ return {
     'echasnovski/mini.pick',
     version = false,
     opts = {
+        options = {
+            use_cache = true
+        }
     },
     config = function(_, opts)
         local pick = require('mini.pick')
