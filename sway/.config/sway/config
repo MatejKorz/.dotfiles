@@ -7,7 +7,6 @@ exec gammastep -t 6500:4000 -l 49:16
 exec dunst &
 
 
-
 ### Variables
 #
 set $mod Mod4
@@ -18,7 +17,7 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 set $term kitty
-set $calc qalculate
+set $calc qalculate-gtk
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -213,7 +212,7 @@ bindsym XF86MonBrightnessDown exec $HOME/.config/sway/scripts/brightness_notify.
 bindsym XF86MonBrightnessUp exec $HOME/.config/sway/scripts/brightness_notify.sh up
 
 # Screenshot
-bindsym Print exec sh -c 'grim -g "$(slurp -w 0)" - | wl-copy'
+bindsym Print exec sh -c 'grim -g "$(slurp)" - | swappy -f -'
 
 
 #
@@ -297,8 +296,9 @@ font pango:Mononoki Nerd Font Mono 12
 focus_on_window_activation focus
 
 for_window {
-    [app_id="librewolf" title="^Picture-in-Picture$"] floating enable, move position 877 450, sticky enable
+    [app_id="librewolf" title="^Picture-in-Picture$"] floating enable, sticky enable
     [app_id="qalculate"] floating enable
+    [class="PV112*"] floating enable
 }
 
 ### Theming
@@ -313,3 +313,6 @@ client.urgent           $red-bg $red-bg $fg     $red-bg
 client.placeholder      $bg     $bg     $fg     $bg
 
 include /etc/sway/config.d/*
+
+
+exec systemctl --user start sway-session.target
