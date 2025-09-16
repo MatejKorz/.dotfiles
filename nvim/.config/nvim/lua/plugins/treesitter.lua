@@ -4,7 +4,7 @@ return {
     lazy = false,
     build = ":TSUpdate",
     opts = {
-        ensure_installed = { "bash", "c", "c_sharp", "css", "cpp", "go", "html", "javascript", "json", "lua", "markdown", "python", "sway", "tmux", "tsx", "typescript" },
+        ensure_installed = { "bash", "c", "c_sharp", "css", "cpp", "glsl", "go", "html", "javascript", "json", "lua", "markdown", "odin", "python", "sway", "tmux", "tsx", "typescript" },
         highlight = {
             enable = true,
             additional_vim_regex_highlighting = false,

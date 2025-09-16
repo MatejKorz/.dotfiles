@@ -71,6 +71,14 @@ return {
             lspconfig['gopls'].setup({
                 capabilities = capabilities
             })
+
+            lspconfig['ols'].setup({
+                capabilities = capabilities
+            })
+
+            lspconfig['glsl_analyzer'].setup({
+                capabilities = capabilities
+            })
         end
     }
 }
