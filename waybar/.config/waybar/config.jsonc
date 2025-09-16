@@ -7,7 +7,7 @@
 
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window"],
-    "modules-right": ["tray", "idle_inhibitor", "bluetooth", "pulseaudio", "network", "battery", "sway/language", "clock"],
+    "modules-right": ["tray", "custom/weather", "idle_inhibitor", "bluetooth", "pulseaudio", "network", "battery", "sway/language", "clock"],
 
     "reload_style_on_change": true,
 
@@ -103,5 +103,45 @@
         "tooltip": true,
         "tooltip-format": "{:%d.%m.%Y}",
         "on-click": "flatpak run org.mozilla.Thunderbird -calendar"
+    },
+
+    "custom/weather": {
+        "exec": "/home/xkorz/.config/waybar/scripts/weather_report.sh",
+        "return-type": "json",
+        "interval": 900,
+        "format": "{icon} {text}",
+        "format-icons": {
+            "0": "",
+            "1": "",
+            "2": "",
+            "3": "",
+            "45": "",
+            "48": "",
+            "51": "",
+            "53": "",
+            "55": "",
+            "56": "",
+            "57": "",
+            "61": "",
+            "63": "",
+            "65": "",
+            "66": "",
+            "67": "",
+            "71": "",
+            "73": "",
+            "75": "",
+            "77": "",
+            "80": "",
+            "81": "",
+            "82": "",
+            "85": "",
+            "86": "",
+            "95": "",
+            "96": "",
+            "99": "",
+            "default": ""
+        }
+
     }
+}
 }

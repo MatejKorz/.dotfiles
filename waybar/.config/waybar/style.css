@@ -184,3 +184,8 @@ button:hover {
     border-top: 1px solid @gray;
     color: @gray;
 }
+
+/* Weather */
+.weather {
+    border-top: 1px solid @fg;
+}
